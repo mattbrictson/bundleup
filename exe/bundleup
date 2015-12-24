@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+
+require "bundleup"
+Bundleup::CLI.new.run

@@ -7,6 +7,9 @@ bundleup is in a pre-1.0 state. This means that its APIs and behavior are subjec
 ## [Unreleased][]
 
 * Your contribution here!
+
+## [0.2.0][] (2015-12-26)
+
 * Animated spinner during long-running bundler commands
 * Rather than run `bundle` in a temp directory, run within the current
   directory, making a backup copy of Gemfile.lock. This ensures that relative
@@ -17,4 +20,5 @@ bundleup is in a pre-1.0 state. This means that its APIs and behavior are subjec
 * Initial release
 
 [Semver]: http://semver.org
-[Unreleased]: https://github.com/mattbrictson/bundleup/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/mattbrictson/bundleup/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/mattbrictson/bundleup/compare/v0.1.0...v0.2.0

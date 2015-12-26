@@ -7,6 +7,7 @@ bundleup is in a pre-1.0 state. This means that its APIs and behavior are subjec
 ## [Unreleased][]
 
 * Your contribution here!
+* Animated spinner during long-running bundler commands
 
 ## 0.1.0 (2015-12-24)
 

@@ -27,11 +27,16 @@ module Bundleup
       gets =~ /^($|y)/i
     end
 
-    def progress(message)
-      print "\e[90m#{message}...\e[0m"
-      result = yield
+    def progress(message, &block)
+      print "\e[90m#{message}... \e[0m"
+      thread = Thread.new(&block)
+      thread.join(0.5)
+      %w(/ - \\ |).cycle do |char|
+        break if thread.join(0.1)
+        print "\r\e[90m#{message}... #{char} \e[0m"
+      end
       puts "\r\e[90m#{message}... OK\e[0m"
-      result
+      thread.value
     end
 
     # Given a two-dimensional Array of strings representing a table of data,

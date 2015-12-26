@@ -36,11 +36,11 @@ That’s it!
 
 ## How it works
 
-bundleup starts by making a copy of your Gemfile and Gemfile.lock into a temporary working directory. Within that directory, it runs `bundle show`, then `bundle update` and `bundle show` again to find what gems versions are being used before and after Bundler does its updating magic. (Since gems are actually being installed into your Ruby environment during these steps, the process may take a few moments to complete, especially if gems with native extensions need to be compiled.)
+bundleup starts by making a backup copy of your Gemfile.lock. Next it runs `bundle show`, then `bundle update` and `bundle show` again to find what gems versions are being used before and after Bundler does its updating magic. (Since gems are actually being installed into your Ruby environment during these steps, the process may take a few moments to complete, especially if gems with native extensions need to be compiled.)
 
-Finally, bundleup runs `bundle outdated` to see the gems that were *not* updated due to Gemfile restrictions.
+Finally, bundleup runs `bundle outdated` to see the gems that were *not* updated due to Gemfile restrictions. It then restores your original Gemfile.lock from the backup, leaving your project as it started.
 
-Since all this takes place in a temporary directory, your project’s actual Gemfile.lock is not affected. After displaying its findings, bundleup gives you the option of running `bundle update` once more against your project. This time your Gemfile.lock *will* be changed. You can skip this step if you want.
+After displaying its findings, bundleup gives you the option of running `bundle update` once more against your project. This time your Gemfile.lock *will* be changed. You can skip this step if you want.
 
 
 ## Roadmap

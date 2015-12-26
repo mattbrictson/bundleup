@@ -22,7 +22,7 @@ module Bundleup
     attr_reader :commands
 
     def load
-      in_temp_dir do
+      with_copy_of_lockfile do
         find_versions(:old)
         commands.update
         find_versions(:new)
@@ -30,14 +30,12 @@ module Bundleup
       end
     end
 
-    def in_temp_dir(&block)
-      Dir.mktmpdir do |dir|
-        FileUtils.cp("Gemfile", dir)
-        FileUtils.cp("Gemfile.lock", dir)
-        FileUtils.cp(Dir["*.gemspec"], dir) if Dir["*.gemspec"].any?
-        FileUtils.cp_r("lib", dir) if File.directory?("lib")
-        Dir.chdir(dir, &block)
-      end
+    def with_copy_of_lockfile
+      backup = ".Gemfile.lock.#{rand(1_000_000_000).to_s(36)}"
+      FileUtils.cp("Gemfile.lock", backup)
+      yield
+    ensure
+      FileUtils.mv(backup, "Gemfile.lock")
     end
 
     def find_pinned_versions

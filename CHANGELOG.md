@@ -8,6 +8,9 @@ bundleup is in a pre-1.0 state. This means that its APIs and behavior are subjec
 
 * Your contribution here!
 * Animated spinner during long-running bundler commands
+* Rather than run `bundle` in a temp directory, run within the current
+  directory, making a backup copy of Gemfile.lock. This ensures that relative
+  paths and `.bundle/config` are honored.
 
 ## 0.1.0 (2015-12-24)
 

@@ -7,6 +7,10 @@ bundleup is in a pre-1.0 state. This means that its APIs and behavior are subjec
 ## [Unreleased][]
 
 * Your contribution here!
+* Always show SHA changes in red. If a dependency is tracking a
+  Git branch, and running `bundle update` would cause that branch
+  to updated and point to a new ref, that is something that
+  warrants attention.
 
 ## [0.2.0][] (2015-12-26)
 

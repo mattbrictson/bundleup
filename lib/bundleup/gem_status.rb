@@ -47,11 +47,11 @@ module Bundleup
     private
 
     def major(version)
-      version.split(".", 2)[0].to_i
+      version.split(".", 2)[0]
     end
 
     def minor(version)
-      version.split(".", 3)[1].to_i
+      version.split(".", 3)[1]
     end
   end
 end

@@ -7,6 +7,9 @@ bundleup is in a pre-1.0 state. This means that its APIs and behavior are subjec
 ## [Unreleased][]
 
 * Your contribution here!
+
+## [0.3.0][] (2016-01-08)
+
 * Always show SHA changes in red. If a dependency is tracking a
   Git branch, and running `bundle update` would cause that branch
   to updated and point to a new ref, that is something that
@@ -24,5 +27,6 @@ bundleup is in a pre-1.0 state. This means that its APIs and behavior are subjec
 * Initial release
 
 [Semver]: http://semver.org
-[Unreleased]: https://github.com/mattbrictson/bundleup/compare/v0.2.0...HEAD
+[Unreleased]: https://github.com/mattbrictson/bundleup/compare/v0.3.0...HEAD
+[0.3.0]: https://github.com/mattbrictson/bundleup/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/mattbrictson/bundleup/compare/v0.1.0...v0.2.0

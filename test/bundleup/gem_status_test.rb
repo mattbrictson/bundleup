@@ -35,4 +35,9 @@ class Bundleup::GemStatusTest < Minitest::Test
     status = Bundleup::GemStatus.new("foo", "1.2.0", "1.2.0")
     assert_equal(:plain, status.color)
   end
+
+  def test_color_disregards_newest_version
+    status = Bundleup::GemStatus.new("foo", "1.2.0", "1.2.1", "2.0.0", "~> 1.2")
+    assert_equal(:plain, status.color)
+  end
 end

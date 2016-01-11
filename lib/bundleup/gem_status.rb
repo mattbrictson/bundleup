@@ -33,15 +33,13 @@ module Bundleup
     end
 
     def major_upgrade?
-      new = newest_version || new_version
-      return false if new.nil? || old_version.nil?
-      major(new) != major(old_version)
+      return false if new_version.nil? || old_version.nil?
+      major(new_version) != major(old_version)
     end
 
     def minor_upgrade?
-      new = newest_version || new_version
-      return false if new.nil? || old_version.nil?
-      !major_upgrade? && minor(new) != minor(old_version)
+      return false if new_version.nil? || old_version.nil?
+      !major_upgrade? && minor(new_version) != minor(old_version)
     end
 
     private

@@ -7,6 +7,8 @@ bundleup is in a pre-1.0 state. This means that its APIs and behavior are subjec
 ## [Unreleased][]
 
 * Your contribution here!
+* Fixed a bug where color was mistakenly based on the newest version of a gem,
+  even if a restriction prevented upgrading to that version.
 
 ## [0.3.0][] (2016-01-08)
 

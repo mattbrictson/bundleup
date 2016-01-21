@@ -4,7 +4,7 @@ module Bundleup
       :red    => 31,
       :green  => 32,
       :yellow => 33,
-      :blue => 34,
+      :blue   => 34,
       :gray   => 90
     }.freeze
 
@@ -63,7 +63,7 @@ module Bundleup
     private
 
     def max_length_of_each_column(rows)
-      rows.first.count.times.map do |i|
+      Array.new(rows.first.count) do |i|
         rows.map { |values| values[i].to_s.length }.max
       end
     end

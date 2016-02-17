@@ -23,7 +23,7 @@ module Bundleup
         out, err, status = Open3.capture3(cmd)
         next(out) if status.success? || fail_silently
 
-        fail ["Failed to execute: #{cmd}", out, err].compact.join("\n")
+        raise ["Failed to execute: #{cmd}", out, err].compact.join("\n")
       end
     end
   end

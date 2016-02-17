@@ -1,12 +1,10 @@
-require "fileutils"
-require "tmpdir"
-
 module Bundleup
-  class Gemfile
+  class Upgrade
     def initialize(commands=BundleCommands.new)
       @commands = commands
       @gem_statuses = {}
-      load
+      @original_lockfile_contents = IO.read(lockfile)
+      run
     end
 
     def upgrades
@@ -17,25 +15,27 @@ module Bundleup
       @gem_statuses.values.select(&:pinned?).sort_by(&:name)
     end
 
-    private
-
-    attr_reader :commands
-
-    def load
-      with_copy_of_lockfile do
-        find_versions(:old)
-        commands.update
-        find_versions(:new)
-        find_pinned_versions
-      end
+    def lockfile_changed?
+      IO.read(lockfile) != original_lockfile_contents
     end
 
-    def with_copy_of_lockfile
-      backup = ".Gemfile.lock.#{rand(1_000_000_000).to_s(36)}"
-      FileUtils.cp("Gemfile.lock", backup)
-      yield
-    ensure
-      FileUtils.mv(backup, "Gemfile.lock")
+    def undo
+      IO.write(lockfile, original_lockfile_contents)
+    end
+
+    private
+
+    attr_reader :commands, :original_lockfile_contents
+
+    def run
+      find_versions(:old)
+      commands.update
+      find_versions(:new)
+      find_pinned_versions
+    end
+
+    def lockfile
+      "Gemfile.lock"
     end
 
     def find_pinned_versions

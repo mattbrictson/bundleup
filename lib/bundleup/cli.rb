@@ -4,11 +4,15 @@ module Bundleup
 
     def run
       puts \
-        "Please wait a moment while I try upgrading a copy of your Gemfile..."
+        "Please wait a moment while I upgrade your Gemfile.lock..."
 
+      committed = false
       review_upgrades
       review_pins
-      offer_bundle_update if upgrades.any?
+      committed = upgrades.any? && confirm_commit
+      puts "Done!" if committed
+    ensure
+      restore_lockfile unless committed
     end
 
     private
@@ -28,20 +32,26 @@ module Bundleup
       print_pins_table
     end
 
-    def offer_bundle_update
-      exec "bundle update" if confirm("\nShall I run `bundle update` for you?")
+    def confirm_commit
+      confirm("\nDo you want to apply these changes?")
     end
 
-    def gemfile
-      @gemfile ||= Gemfile.new
+    def restore_lockfile
+      return unless upgrade.lockfile_changed?
+      upgrade.undo
+      puts "Your original Gemfile.lock has been restored."
+    end
+
+    def upgrade
+      @upgrade ||= Upgrade.new
     end
 
     def upgrades
-      gemfile.upgrades
+      upgrade.upgrades
     end
 
     def pins
-      gemfile.pins
+      upgrade.pins
     end
 
     def print_upgrades_table

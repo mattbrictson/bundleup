@@ -7,6 +7,13 @@ bundleup is in a pre-1.0 state. This means that its APIs and behavior are subjec
 ## [Unreleased][]
 
 * Your contribution here!
+
+## [0.4.0][] (2016-02-19)
+
+* **Change the upgrade process to modify the Gemfile.lock in place, with the
+  option to "undo" (i.e. restore from backup) if the changes are not desired.**
+  This makes bundleup much faster since it doesn't have to run `bundle update`
+  twice.
 * Fixed a bug where color was mistakenly based on the newest version of a gem,
   even if a restriction prevented upgrading to that version.
 
@@ -29,6 +36,7 @@ bundleup is in a pre-1.0 state. This means that its APIs and behavior are subjec
 * Initial release
 
 [Semver]: http://semver.org
-[Unreleased]: https://github.com/mattbrictson/bundleup/compare/v0.3.0...HEAD
+[Unreleased]: https://github.com/mattbrictson/bundleup/compare/v0.4.0...HEAD
+[0.4.0]: https://github.com/mattbrictson/bundleup/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/mattbrictson/bundleup/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/mattbrictson/bundleup/compare/v0.1.0...v0.2.0

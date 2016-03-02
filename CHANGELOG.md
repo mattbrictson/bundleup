@@ -7,6 +7,11 @@ bundleup is in a pre-1.0 state. This means that its APIs and behavior are subjec
 ## [Unreleased][]
 
 * Your contribution here!
+* You can now pass command-line arguments to bundleup, which will in turn be
+  handed to `bundle update`. For example: `bundleup --group=development`.
+* Improve the console output when a Bundler command fails.
+* Fixed a bug where if a Bundler command failed to run, it would be executed a
+  second time.
 
 ## [0.4.0][] (2016-02-19)
 

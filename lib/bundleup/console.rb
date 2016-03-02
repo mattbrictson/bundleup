@@ -24,7 +24,7 @@ module Bundleup
 
     def confirm(question)
       print question.sub(/\??\z/, " [Yn]? ")
-      gets =~ /^($|y)/i
+      $stdin.gets =~ /^($|y)/i
     end
 
     def progress(message, &block)

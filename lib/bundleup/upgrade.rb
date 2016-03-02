@@ -1,6 +1,7 @@
 module Bundleup
   class Upgrade
-    def initialize(commands=BundleCommands.new)
+    def initialize(update_args=[], commands=BundleCommands.new)
+      @update_args = update_args
       @commands = commands
       @gem_statuses = {}
       @original_lockfile_contents = IO.read(lockfile)
@@ -25,11 +26,11 @@ module Bundleup
 
     private
 
-    attr_reader :commands, :original_lockfile_contents
+    attr_reader :update_args, :commands, :original_lockfile_contents
 
     def run
       find_versions(:old)
-      commands.update
+      commands.update(update_args)
       find_versions(:new)
       find_pinned_versions
     end

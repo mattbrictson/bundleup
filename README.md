@@ -34,6 +34,12 @@ bundleup
 
 That’s it!
 
+Protip: Any extra command-line arguments will be passed along to `bundle update`. For example:
+
+```
+# Only upgrade development gems
+bundleup --group=development
+```
 
 ## How it works
 

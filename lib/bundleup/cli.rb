@@ -37,13 +37,14 @@ module Bundleup
     end
 
     def restore_lockfile
+      return unless defined?(@upgrade)
       return unless upgrade.lockfile_changed?
       upgrade.undo
       puts "Your original Gemfile.lock has been restored."
     end
 
     def upgrade
-      @upgrade ||= Upgrade.new
+      @upgrade ||= Upgrade.new(ARGV)
     end
 
     def upgrades

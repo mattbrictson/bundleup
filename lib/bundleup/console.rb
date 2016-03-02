@@ -27,17 +27,15 @@ module Bundleup
       $stdin.gets =~ /^($|y)/i
     end
 
+    # Runs a block in the background and displays a spinner until it completes.
     def progress(message, &block)
+      spinner = %w(/ - \\ |).cycle
       print "\e[90m#{message}... \e[0m"
-      thread = Thread.new(&block)
-      wait_for_exit(thread, 0.5)
-      %w(/ - \\ |).cycle do |char|
-        break if wait_for_exit(thread, 0.1)
-        print "\r\e[90m#{message}... #{char} \e[0m"
+      result = observing_thread(block, 0.5, 0.1) do
+        print "\r\e[90m#{message}... #{spinner.next} \e[0m"
       end
-      thread.value.tap do
-        puts "\r\e[90m#{message}... OK\e[0m"
-      end
+      puts "\r\e[90m#{message}... OK\e[0m"
+      result
     rescue StandardError
       puts "\r\e[90m#{message}...\e[0m \e[31mFAILED\e[0m"
       raise
@@ -70,6 +68,21 @@ module Bundleup
       Array.new(rows.first.count) do |i|
         rows.map { |values| values[i].to_s.length }.max
       end
+    end
+
+    # Starts the `callable` in a background thread and waits for it to complete.
+    # If the callable fails with an exception, it will be raised here. Otherwise
+    # the main thread is paused for an `initial_wait` time in seconds, and
+    # subsequently for `periodic_wait` repeatedly until the thread completes.
+    # After each wait, `yield` is called to allow a block to execute.
+    def observing_thread(callable, initial_wait, periodic_wait)
+      thread = Thread.new(&callable)
+      wait_for_exit(thread, initial_wait)
+      loop do
+        break if wait_for_exit(thread, periodic_wait)
+        yield
+      end
+      thread.value
     end
 
     def wait_for_exit(thread, seconds)

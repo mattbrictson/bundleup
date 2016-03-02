@@ -30,13 +30,17 @@ module Bundleup
     def progress(message, &block)
       print "\e[90m#{message}... \e[0m"
       thread = Thread.new(&block)
-      thread.join(0.5)
+      wait_for_exit(thread, 0.5)
       %w(/ - \\ |).cycle do |char|
-        break if thread.join(0.1)
+        break if wait_for_exit(thread, 0.1)
         print "\r\e[90m#{message}... #{char} \e[0m"
       end
-      puts "\r\e[90m#{message}... OK\e[0m"
-      thread.value
+      thread.value.tap do
+        puts "\r\e[90m#{message}... OK\e[0m"
+      end
+    rescue StandardError
+      puts "\r\e[90m#{message}...\e[0m \e[31mFAILED\e[0m"
+      raise
     end
 
     # Given a two-dimensional Array of strings representing a table of data,
@@ -66,6 +70,14 @@ module Bundleup
       Array.new(rows.first.count) do |i|
         rows.map { |values| values[i].to_s.length }.max
       end
+    end
+
+    def wait_for_exit(thread, seconds)
+      thread.join(seconds)
+    rescue StandardError
+      # Sanity check. If we get an exception, the thread should be dead.
+      raise if thread.alive?
+      thread
     end
   end
 end

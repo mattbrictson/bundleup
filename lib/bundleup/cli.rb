@@ -19,7 +19,7 @@ module Bundleup
 
     def review_upgrades
       if upgrades.any?
-        puts "\nIt looks like the following gem(s) will be updated:\n\n"
+        puts "\nThe following gem(s) will be updated:\n\n"
         print_upgrades_table
       else
         ok("Nothing to update.")

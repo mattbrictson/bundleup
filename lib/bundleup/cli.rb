@@ -67,7 +67,7 @@ module Bundleup
     def print_pins_table
       rows = tableize(pins) do |g|
         pin_operator, pin_version = g.pin.split(" ", 2)
-        reason = [":", "pinned at", pin_operator, pin_version]
+        reason = [":", "pinned at", pin_operator.rjust(2), pin_version]
         [g.name, g.new_version, "→", g.newest_version, *reason]
       end
       puts rows.join("\n")

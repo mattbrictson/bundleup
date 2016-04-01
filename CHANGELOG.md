@@ -7,6 +7,9 @@ bundleup is in a pre-1.0 state. This means that its APIs and behavior are subjec
 ## [Unreleased][]
 
 * Your contribution here!
+
+## [0.5.0][] (2016-04-01)
+
 * You can now pass command-line arguments to bundleup, which will in turn be
   handed to `bundle update`. For example: `bundleup --group=development`.
 * Improve the console output when a Bundler command fails.
@@ -41,7 +44,8 @@ bundleup is in a pre-1.0 state. This means that its APIs and behavior are subjec
 * Initial release
 
 [Semver]: http://semver.org
-[Unreleased]: https://github.com/mattbrictson/bundleup/compare/v0.4.0...HEAD
+[Unreleased]: https://github.com/mattbrictson/bundleup/compare/v0.5.0...HEAD
+[0.5.0]: https://github.com/mattbrictson/bundleup/compare/v0.4.0...v0.5.0
 [0.4.0]: https://github.com/mattbrictson/bundleup/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/mattbrictson/bundleup/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/mattbrictson/bundleup/compare/v0.1.0...v0.2.0

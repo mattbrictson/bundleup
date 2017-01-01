@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/BlockLength
 module Bundleup
   GemStatus = Struct.new(:name,
                          :old_version,

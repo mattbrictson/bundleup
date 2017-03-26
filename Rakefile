@@ -12,4 +12,4 @@ end
 RuboCop::RakeTask.new
 
 task "release:rubygem_push" => "chandler:push"
-task :default => [:test, :rubocop]
+task :default => %i(test rubocop)

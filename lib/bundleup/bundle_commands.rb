@@ -5,15 +5,15 @@ module Bundleup
     include Console
 
     def outdated
-      run(%w(bundle outdated), true)
+      run(%w[bundle outdated], true)
     end
 
     def show
-      run(%w(bundle show))
+      run(%w[bundle show])
     end
 
     def update(args=[])
-      run(%w(bundle update) + args)
+      run(%w[bundle update] + args)
     end
 
     private

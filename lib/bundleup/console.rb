@@ -29,7 +29,7 @@ module Bundleup
 
     # Runs a block in the background and displays a spinner until it completes.
     def progress(message, &block)
-      spinner = %w(/ - \\ |).cycle
+      spinner = %w[/ - \\ |].cycle
       print "\e[90m#{message}... \e[0m"
       result = observing_thread(block, 0.5, 0.1) do
         print "\r\e[90m#{message}... #{spinner.next} \e[0m"

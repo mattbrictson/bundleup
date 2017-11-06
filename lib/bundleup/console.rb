@@ -9,17 +9,17 @@ module Bundleup
     }.freeze
 
     def ok(message)
-      color(:green, "✔ #{message}")
+      puts color(:green, "✔ #{message}")
     end
 
     def attention(message)
-      color(:yellow, message)
+      puts color(:yellow, message)
     end
 
     def color(color_name, message)
       code = ANSI_CODES[color_name]
       return puts(message) if code.nil?
-      puts "\e[0;#{code};49m#{message}\e[0m"
+      "\e[0;#{code};49m#{message}\e[0m"
     end
 
     def confirm(question)

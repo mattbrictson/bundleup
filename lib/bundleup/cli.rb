@@ -60,7 +60,7 @@ module Bundleup
         [g.name, g.old_version || "(new)", "→", g.new_version || "(removed)"]
       end
       upgrades.zip(rows).each do |g, row|
-        color(g.color, row)
+        puts color(g.color, row)
       end
     end
 

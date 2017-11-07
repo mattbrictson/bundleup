@@ -60,17 +60,25 @@ module Bundleup
         [g.name, g.old_version || "(new)", "→", g.new_version || "(removed)"]
       end
       upgrades.zip(rows).each do |g, row|
-        color(g.color, row)
+        puts color(g.color, row)
       end
     end
 
     def print_pins_table
       rows = tableize(pins) do |g|
-        pin_operator, pin_version = g.pin.split(" ", 2)
-        reason = [":", "pinned at", pin_operator.rjust(2), pin_version]
-        [g.name, g.new_version, "→", g.newest_version, *reason]
+        [g.name, g.new_version, "→", g.newest_version, *pin_reason(g)]
       end
       puts rows.join("\n")
+    end
+
+    def pin_reason(gem)
+      notes = color(:gray, gemfile.gem_comment(gem.name))
+      pin_operator, pin_version = gem.pin.split(" ", 2)
+      [":", "pinned at", pin_operator.rjust(2), pin_version, notes]
+    end
+
+    def gemfile
+      @gemfile ||= Gemfile.new
     end
   end
 end

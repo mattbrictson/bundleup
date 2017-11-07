@@ -7,6 +7,7 @@ bundleup is in a pre-1.0 state. This means that its APIs and behavior are subjec
 ## [Unreleased][]
 
 * Your contribution here!
+* [#1](https://github.com/mattbrictson/bundleup/issues/1): If a Gemfile has an inline or prefix comment for a particular gem, and that gem is being held back due to a pin, then print the comment along with the pin information in bundleup's output.
 
 ## [0.5.0][] (2016-04-01)
 

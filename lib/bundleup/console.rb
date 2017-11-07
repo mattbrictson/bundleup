@@ -18,7 +18,7 @@ module Bundleup
 
     def color(color_name, message)
       code = ANSI_CODES[color_name]
-      return puts(message) if code.nil?
+      return message if code.nil?
       "\e[0;#{code};49m#{message}\e[0m"
     end
 

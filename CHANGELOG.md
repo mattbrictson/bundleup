@@ -7,6 +7,9 @@ bundleup is in a pre-1.0 state. This means that its APIs and behavior are subjec
 ## [Unreleased][]
 
 * Your contribution here!
+
+## [0.6.1][] (2017-11-06)
+
 * Fix erroneous blank lines in output
 
 ## [0.6.0][] (2017-11-06)
@@ -49,7 +52,8 @@ bundleup is in a pre-1.0 state. This means that its APIs and behavior are subjec
 * Initial release
 
 [Semver]: http://semver.org
-[Unreleased]: https://github.com/mattbrictson/bundleup/compare/v0.6.0...HEAD
+[Unreleased]: https://github.com/mattbrictson/bundleup/compare/v0.6.1...HEAD
+[0.6.1]: https://github.com/mattbrictson/bundleup/compare/v0.6.0...v0.6.1
 [0.6.0]: https://github.com/mattbrictson/bundleup/compare/v0.5.0...v0.6.0
 [0.5.0]: https://github.com/mattbrictson/bundleup/compare/v0.4.0...v0.5.0
 [0.4.0]: https://github.com/mattbrictson/bundleup/compare/v0.3.0...v0.4.0

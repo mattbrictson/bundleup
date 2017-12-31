@@ -1,6 +1,7 @@
 AllCops:
   Exclude:
     - "*.gemspec"
+    - "vendor/**/*"
 
 Layout/SpaceAroundEqualsInParameterDefault:
   EnforcedStyle: no_space

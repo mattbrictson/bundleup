@@ -7,6 +7,7 @@ bundleup is in a pre-1.0 state. This means that its APIs and behavior are subjec
 ## [Unreleased][]
 
 * Your contribution here!
+* **Drop support for Ruby < 2.3**
 
 ## [0.6.1][] (2017-11-06)
 

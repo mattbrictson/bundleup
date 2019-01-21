@@ -35,11 +35,13 @@ module Bundleup
 
     def major_upgrade?
       return false if new_version.nil? || old_version.nil?
+
       major(new_version) != major(old_version)
     end
 
     def minor_upgrade?
       return false if new_version.nil? || old_version.nil?
+
       !major_upgrade? && minor(new_version) != minor(old_version)
     end
 
@@ -54,3 +56,4 @@ module Bundleup
     end
   end
 end
+# rubocop:enable Metrics/BlockLength

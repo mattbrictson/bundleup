@@ -28,6 +28,7 @@ module Bundleup
 
     def review_pins
       return if pins.empty?
+
       puts "\nNote that the following gem(s) are being held back:\n\n"
       print_pins_table
     end
@@ -39,6 +40,7 @@ module Bundleup
     def restore_lockfile
       return unless defined?(@upgrade)
       return unless upgrade.lockfile_changed?
+
       upgrade.undo
       puts "Your original Gemfile.lock has been restored."
     end

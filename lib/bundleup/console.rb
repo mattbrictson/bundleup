@@ -1,11 +1,11 @@
 module Bundleup
   module Console
     ANSI_CODES = {
-      :red    => 31,
-      :green  => 32,
+      :red => 31,
+      :green => 32,
       :yellow => 33,
-      :blue   => 34,
-      :gray   => 90
+      :blue => 34,
+      :gray => 90
     }.freeze
 
     def ok(message)
@@ -19,6 +19,7 @@ module Bundleup
     def color(color_name, message)
       code = ANSI_CODES[color_name]
       return message if code.nil?
+
       "\e[0;#{code};49m#{message}\e[0m"
     end
 
@@ -80,6 +81,7 @@ module Bundleup
       wait_for_exit(thread, initial_wait)
       loop do
         break if wait_for_exit(thread, periodic_wait)
+
         yield
       end
       thread.value
@@ -90,6 +92,7 @@ module Bundleup
     rescue StandardError
       # Sanity check. If we get an exception, the thread should be dead.
       raise if thread.alive?
+
       thread
     end
   end

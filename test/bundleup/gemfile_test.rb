@@ -2,7 +2,7 @@ require "test_helper"
 
 class Bundleup::GemfileTest < Minitest::Test
   def test_gem_comment
-    gemfile_path = File.expand_path("../../fixtures/Gemfile.sample", __FILE__)
+    gemfile_path = File.expand_path("../fixtures/Gemfile.sample", __dir__)
     gemfile = Bundleup::Gemfile.new(gemfile_path)
 
     assert_nil(gemfile.gem_comment("redis"))

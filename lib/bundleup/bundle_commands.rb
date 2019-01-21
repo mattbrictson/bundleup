@@ -23,6 +23,7 @@ module Bundleup
       progress("Running `#{cmd_line}`") do
         out, err, status = Open3.capture3(*cmd)
         next(out) if status.success? || fail_silently
+
         raise ["Failed to execute: #{cmd_line}", out, err].compact.join("\n")
       end
     end

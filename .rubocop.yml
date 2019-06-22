@@ -1,4 +1,5 @@
 AllCops:
+  TargetRubyVersion: 2.4
   Exclude:
     - "*.gemspec"
     - "vendor/**/*"
@@ -17,6 +18,9 @@ Metrics/MethodLength:
 Metrics/ClassLength:
   Exclude:
     - "test/**/*"
+
+Naming/MemoizedInstanceVariableName:
+  Enabled: false
 
 Style/BarePercentLiterals:
   EnforcedStyle: percent_q

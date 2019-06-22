@@ -1,5 +1,4 @@
 require "bundler/gem_tasks"
-require "chandler/tasks"
 require "rake/testtask"
 require "rubocop/rake_task"
 
@@ -11,5 +10,9 @@ end
 
 RuboCop::RakeTask.new
 
-task "release:rubygem_push" => "chandler:push"
 task :default => %i[test rubocop]
+
+Rake::Task["release"].enhance do
+  puts "Don't forget to publish the release on GitHub!"
+  system "open https://github.com/mattbrictson/bundleup/releases"
+end

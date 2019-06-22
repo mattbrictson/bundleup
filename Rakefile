@@ -10,14 +10,14 @@ end
 
 RuboCop::RakeTask.new
 
-task :default => %i[test rubocop]
+task default: %i[test rubocop]
 
 Rake::Task["release"].enhance do
   puts "Don't forget to publish the release on GitHub!"
   system "open https://github.com/mattbrictson/bundleup/releases"
 end
 
-task :bump => %w[bump:bundler bump:ruby bump:year]
+task bump: %w[bump:bundler bump:ruby bump:year]
 
 namespace :bump do
   task :bundler do
@@ -98,7 +98,7 @@ module RubyVersions
         yaml = open(
           "https://raw.githubusercontent.com/ruby/www.ruby-lang.org/master/_data/downloads.yml"
         )
-        YAML.safe_load(yaml, :symbolize_names => true)
+        YAML.safe_load(yaml, symbolize_names: true)
       end
     end
   end

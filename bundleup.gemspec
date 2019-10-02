@@ -27,5 +27,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "minitest-reporters", "~> 1.1"
   spec.add_development_dependency "rake", "~> 12.0"
   spec.add_development_dependency "rubocop", "0.75.0"
-  spec.add_development_dependency "rubocop-performance", "1.4.1"
+  spec.add_development_dependency "rubocop-performance", "1.5.0"
 end

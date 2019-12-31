@@ -1,6 +1,3 @@
-# Coveralls has to be loaded first
-require_relative("./support/coveralls")
-
 $LOAD_PATH.unshift File.expand_path("../lib", __dir__)
 require "bundleup"
 

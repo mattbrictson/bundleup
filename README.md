@@ -7,10 +7,10 @@
 
 You might like bundleup because it:
 
-* shows you exactly what gems will be updated lets you decide whether to proceed
-* uses color to call your attention to important gem updates (based on [Semver][])
-* lets you know when a version "pin" in your Gemfile is preventing an update
-* relies on standard Bundler output and does not patch code or use Bundler internals
+- shows you exactly what gems will be updated lets you decide whether to proceed
+- uses color to call your attention to important gem updates (based on [Semver][])
+- lets you know when a version "pin" in your Gemfile is preventing an update
+- relies on standard Bundler output and does not patch code or use Bundler internals
 
 Here it is in action:
 
@@ -48,27 +48,24 @@ bundleup --group=development
 
 bundleup starts by making a backup copy of your Gemfile.lock. Next it runs `bundle list`, then `bundle update` and `bundle list` again to find what gems versions are being used before and after Bundler does its updating magic. (Since gems are actually being installed into your Ruby environment during these steps, the process may take a few moments to complete, especially if gems with native extensions need to be compiled.)
 
-Finally, bundleup runs `bundle outdated` to see the gems that were *not* updated due to Gemfile restrictions.
+Finally, bundleup runs `bundle outdated` to see the gems that were _not_ updated due to Gemfile restrictions.
 
 After displaying its findings, bundleup gives you the option of keeping the changes. If you answer "no", bundleup will restore your original Gemfile.lock from its backup, leaving your project untouched.
-
 
 ## Roadmap
 
 bundleup is a very simple script at this point, but it could be more. Some possibilities:
 
-* Automatically commit the Gemfile.lock changes with a nice commit message
-* Integrate with bundler-audit to mark upgrades that have important security fixes
-* Display relevant CHANGELOG entries for major upgrades
-* Non-interactive mode
+- Automatically commit the Gemfile.lock changes with a nice commit message
+- Integrate with bundler-audit to mark upgrades that have important security fixes
+- Display relevant CHANGELOG entries for major upgrades
+- Non-interactive mode
 
 If you have other ideas, open an issue on GitHub!
-
 
 ## Contributing
 
 Code contributions are also welcome! Read [CONTRIBUTING.md](CONTRIBUTING.md) to get started.
 
-
 [bundler]: http://bundler.io
-[Semver]: http://semver.org
+[semver]: http://semver.org

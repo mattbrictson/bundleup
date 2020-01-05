@@ -48,7 +48,7 @@ module Bundleup
     end
 
     def find_versions(type)
-      commands.show.scan(/\* (\S+) \((\S+)(?: (\S+))?\)/) do |name, ver, sha|
+      commands.list.scan(/\* (\S+) \((\S+)(?: (\S+))?\)/) do |name, ver, sha|
         gem_status(name).public_send("#{type}_version=", sha || ver)
       end
     end

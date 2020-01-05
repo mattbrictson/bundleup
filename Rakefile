@@ -32,6 +32,7 @@ namespace :bump do
 
     replace_in_file "bundleup.gemspec", /ruby_version = ">= (.*)"/ => lowest
     replace_in_file ".rubocop.yml", /TargetRubyVersion: (.*)/ => lowest_minor
+    replace_in_file "README.md", /Ruby (\d+\.\d+)/ => lowest_minor
 
     travis = YAML.safe_load(open(".travis.yml"))
     travis["rvm"] = RubyVersions.latest_supported_patches + ["ruby-head"]

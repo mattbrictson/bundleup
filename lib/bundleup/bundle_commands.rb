@@ -8,8 +8,8 @@ module Bundleup
       run(%w[bundle outdated], true)
     end
 
-    def show
-      run(%w[bundle show])
+    def list
+      run(%w[bundle list])
     end
 
     def update(args=[])

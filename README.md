@@ -19,7 +19,7 @@ Here it is in action:
 ## Requirements
 
 - Bundler 1.16 or later
-- Ruby 2.4 or later
+- Ruby 2.5 or later
 
 ## Usage
 

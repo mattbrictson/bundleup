@@ -40,8 +40,16 @@ module Bundleup
     end
 
     def find_pinned_versions
-      expr = /\* (\S+) \(newest (\S+),.* requested (.*)\)/
-      commands.outdated.scan(expr) do |name, newest, pin|
+      outdated_output = commands.outdated
+      expr = if outdated_output.match?(/^Gem\s+Current\s+Latest/)
+               # Bundler >= 2.2 format
+               /^(\S+)\s\s+\S+\s\s+(\d\S+)\s\s+(\S.*?)(?:$|\s\s)/
+             else
+               # Bundler < 2.2
+               /\* (\S+) \(newest (\S+),.* requested (.*)\)/
+             end
+
+      outdated_output.scan(expr) do |name, newest, pin|
         gem_status(name).newest_version = newest
         gem_status(name).pin = pin
       end

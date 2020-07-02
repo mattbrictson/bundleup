@@ -8,10 +8,19 @@ AllCops:
     - "*.gemspec"
     - "vendor/**/*"
 
+Layout/EmptyLinesAroundAttributeAccessor:
+  Enabled: true
+
 Layout/SpaceAroundEqualsInParameterDefault:
   EnforcedStyle: no_space
 
 Layout/SpaceAroundMethodCallOperator:
+  Enabled: true
+
+Lint/DeprecatedOpenSSLConstant:
+  Enabled: true
+
+Lint/MixedRegexpCaptureTypes:
   Enabled: true
 
 Lint/RaiseException:
@@ -63,6 +72,18 @@ Style/HashTransformKeys:
   Enabled: true
 
 Style/HashTransformValues:
+  Enabled: true
+
+Style/RedundantFetchBlock:
+  Enabled: true
+
+Style/RedundantRegexpCharacterClass:
+  Enabled: true
+
+Style/RedundantRegexpEscape:
+  Enabled: true
+
+Style/SlicingWithRange:
   Enabled: true
 
 Style/StringLiterals:

@@ -1,0 +1,9 @@
+Gem            Current  Latest  Requested  Groups
+childprocess   3.0.0    4.0.0
+diff-lcs       1.4.2    1.4.4
+json           2.3.0    2.3.1
+mini_portile2  2.4.0    2.5.0
+redis          4.1.4    4.2.1   ~> 4.1.4   default
+sidekiq        6.0.7    6.1.0   ~> 6.0     default
+sprockets      3.7.2    4.0.2   ~> 3.5     default
+tzinfo         1.2.7    2.0.2

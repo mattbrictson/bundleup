@@ -1,0 +1,9 @@
+Outdated gems included in the bundle:
+  * childprocess (newest 4.0.0, installed 3.0.0)
+  * diff-lcs (newest 1.4.4, installed 1.4.2)
+  * json (newest 2.3.1, installed 2.3.0)
+  * mini_portile2 (newest 2.5.0, installed 2.4.0)
+  * redis (newest 4.2.1, installed 4.1.4, requested ~> 4.1.4) in group "default"
+  * sidekiq (newest 6.1.0, installed 6.0.7, requested ~> 6.0) in group "default"
+  * sprockets (newest 4.0.2, installed 3.7.2, requested ~> 3.5) in group "default"
+  * tzinfo (newest 2.0.2, installed 1.2.7)

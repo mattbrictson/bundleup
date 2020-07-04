@@ -30,7 +30,7 @@ namespace :bump do
     lowest = RubyVersions.lowest_supported
     lowest_minor = RubyVersions.lowest_supported_minor
 
-    replace_in_file "bundleup.gemspec", /ruby_version = ">= (.*)"/ => lowest
+    replace_in_file "bundleup.gemspec", /ruby_version = .*">= (.*)"/ => lowest
     replace_in_file ".rubocop.yml", /TargetRubyVersion: (.*)/ => lowest_minor
     replace_in_file "README.md", /Ruby (\d+\.\d+)/ => lowest_minor
 

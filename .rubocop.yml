@@ -24,6 +24,9 @@ Metrics/ClassLength:
   Exclude:
     - "test/**/*"
 
+Minitest/MultipleAssertions:
+  Max: 6
+
 Naming/MemoizedInstanceVariableName:
   Enabled: false
 

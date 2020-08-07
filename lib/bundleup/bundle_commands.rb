@@ -18,7 +18,7 @@ module Bundleup
     include Console
 
     def check
-      run(%w[bundle check], true).success?
+      run(%w[bundle check], fail_silently: true).success?
     end
 
     def install
@@ -26,7 +26,7 @@ module Bundleup
     end
 
     def outdated
-      run(%w[bundle outdated], true).output
+      run(%w[bundle outdated], fail_silently: true).output
     end
 
     def list
@@ -39,7 +39,7 @@ module Bundleup
 
     private
 
-    def run(cmd, fail_silently=false)
+    def run(cmd, fail_silently: false)
       cmd_line = cmd.join(" ")
       progress("Running `#{cmd_line}`") do
         out, err, status = Open3.capture3(*cmd)

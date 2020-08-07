@@ -78,6 +78,7 @@ module Bundleup
     # After each wait, `yield` is called to allow a block to execute.
     def observing_thread(callable, initial_wait, periodic_wait)
       thread = Thread.new(&callable)
+      thread.report_on_exception = false
       wait_for_exit(thread, initial_wait)
       loop do
         break if wait_for_exit(thread, periodic_wait)

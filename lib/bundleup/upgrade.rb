@@ -29,6 +29,7 @@ module Bundleup
     attr_reader :update_args, :commands, :original_lockfile_contents
 
     def run
+      commands.check || commands.install
       find_versions(:old)
       commands.update(update_args)
       find_versions(:new)

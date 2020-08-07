@@ -46,7 +46,7 @@ bundleup --group=development
 
 ## How it works
 
-bundleup starts by making a backup copy of your Gemfile.lock. Next it runs `bundle list`, then `bundle update` and `bundle list` again to find what gems versions are being used before and after Bundler does its updating magic. (Since gems are actually being installed into your Ruby environment during these steps, the process may take a few moments to complete, especially if gems with native extensions need to be compiled.)
+bundleup starts by making a backup copy of your Gemfile.lock. Next it runs `bundle check` (and `bundle install` if any gems are missing in your local environment), `bundle list`, then `bundle update` and `bundle list` again to find what gems versions are being used before and after Bundler does its updating magic. (Since gems are actually being installed into your Ruby environment during these steps, the process may take a few moments to complete, especially if gems with native extensions need to be compiled.)
 
 Finally, bundleup runs `bundle outdated` to see the gems that were _not_ updated due to Gemfile restrictions.
 

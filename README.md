@@ -54,7 +54,7 @@ After displaying its findings, bundleup gives you the option of keeping the chan
 
 ## Roadmap
 
-bundleup is a very simple script at this point, but it could be more. Some possibilities:
+bundleup is very simple at this point, but it could be more. Some possibilities:
 
 - Automatically commit the Gemfile.lock changes with a nice commit message
 - Integrate with bundler-audit to mark upgrades that have important security fixes

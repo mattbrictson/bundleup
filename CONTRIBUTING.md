@@ -1,29 +1,41 @@
-# Contributing to bundleup
+# Contribution guide
 
-Have a feature idea, bug fix, or refactoring suggestion? Contributions are welcome!
+Thank you for your input and support! Here are some guidelines to follow when contributing.
 
-## Pull requests
+## 🐛 Bug reports
 
-1. Check [Issues][] to see if your contribution has already been discussed and/or implemented.
-2. If not, open an issue to discuss your contribution. I won't accept all changes and do not want to waste your time.
-3. Once you have the :thumbsup:, fork the repo, make your changes, and open a PR.
-4. Don't forget to add your contribution and credit yourself in `CHANGELOG.md`!
+- Explain the troubleshooting steps you've already tried
+- Use GitHub-flavored Markdown, especially code fences <code>```</code> to format logs
+- Include reproduction steps or code for a failing test case if you can
 
-## Coding guidelines
+## ✨ Feature requests
 
-* This project has a coding style enforced by [RuboCop][]. Use hash rockets and double-quoted strings, and otherwise try to follow the [Ruby style guide][style].
-* Writing tests is strongly encouraged! This project uses Minitest.
+Ideas for new bundleup features are appreciated!
 
-## Getting started
+- Show examples of how the feature would work
+- Explain your motivation for requesting the feature
+- Would it be useful for the majority of bundleup users?
+- Is it a breaking change?
 
-After checking out the repo, run `bin/setup` to install dependencies.
+## ⤴️ Pull requests
 
-bundleup offers the following development and testing commands:
+> Protip: If you have a big change in mind, it is a good idea to open an issue first to propose the idea and get some initial feedback.
 
-* `bin/console` loads your working copy of bundleup into an irb session
-* `bundle exec bundleup` runs your working copy of the bundleup executable
-* `rake` executes all of bundleup's tests and RuboCop checks
+### Working on code
 
-[Issues]: https://github.com/mattbrictson/bundleup/issues
-[RuboCop]: https://github.com/bbatsov/rubocop
-[style]: https://github.com/bbatsov/ruby-style-guide
+- Run `bin/setup` to install dependencies
+- `bin/console` opens an irb console if you need a REPL to try things out
+- `bundle exec bundleup` will run your working copy of bundleup
+- `rake install` will install your working copy of bundleup globally (so you can test it in other projects)
+- Make sure to run `rake` to run all tests and RuboCop checks prior to opening a PR
+
+### PR guidelines
+
+- Give the PR a concise and descriptive title that completes this sentence: _If this PR is merged, it will [TITLE]_
+- If the PR fixes an open issue, link to the issue in the description
+- Provide a description that ideally answers these questions:
+  - Why is this change needed? What problem(s) does it solve?
+  - Were there alternative solutions that you considered?
+  - How has it been tested?
+  - Is it a breaking change?
+  - Does the documentation need to be updated?

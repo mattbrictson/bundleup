@@ -37,6 +37,7 @@ module Bundleup
 
     def while_spinning(message, &block)
       thread = Thread.new(&block)
+      thread.report_on_exception = false
       message = message.ljust(console_width - 2)
       print "\r#{Colors.blue([spinner.next, message].join(' '))}" until wait_for_exit(thread, 0.1)
       thread.value

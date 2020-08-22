@@ -18,24 +18,25 @@ module Bundleup
       assert_gemfile_and_lock_exist!
 
       logger.puts "Please wait a moment while I upgrade your Gemfile.lock..."
-      lockfile_backup = Backup.new("Gemfile.lock")
-      update_report, pin_report = perform_analysis
+      Backup.restore_on_error("Gemfile.lock") do |backup|
+        update_report, pin_report = perform_analysis
 
-      if update_report.empty?
-        logger.ok "Nothing to update."
-        logger.puts "\n#{pin_report}" unless pin_report.empty?
-        return
-      end
+        if update_report.empty?
+          logger.ok "Nothing to update."
+          logger.puts "\n#{pin_report}" unless pin_report.empty?
+          break
+        end
 
-      logger.puts
-      logger.puts update_report
-      logger.puts pin_report unless pin_report.empty?
+        logger.puts
+        logger.puts update_report
+        logger.puts pin_report unless pin_report.empty?
 
-      if logger.confirm?("Do you want to apply these changes?")
-        logger.ok "Done!"
-      else
-        lockfile_backup.restore
-        logger.puts "Your original Gemfile.lock has been restored."
+        if logger.confirm?("Do you want to apply these changes?")
+          logger.ok "Done!"
+        else
+          backup.restore
+          logger.puts "Your original Gemfile.lock has been restored."
+        end
       end
     end
 

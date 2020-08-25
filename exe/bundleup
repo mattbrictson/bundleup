@@ -1,4 +1,10 @@
 #!/usr/bin/env ruby
 
 require "bundleup"
-Bundleup::CLI.new.run
+
+begin
+  Bundleup::CLI.new(ARGV).run
+rescue Bundleup::CLI::Error => e
+  Bundleup.logger.error(e.message)
+  exit(false)
+end

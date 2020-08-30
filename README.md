@@ -14,7 +14,7 @@ You might like bundleup because it:
 
 Here it is in action:
 
-<img src="./demo.gif" width="650" height="572" alt="Sample output">
+<img src="./demo.gif" width="522" height="283" alt="Sample output">
 
 ## Requirements
 

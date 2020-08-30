@@ -37,8 +37,8 @@ class Bundleup::PinReportTest < Minitest::Test
       assert_equal(<<~REPORT, report.to_s)
         Note that the following gems are being held back:
 
-          rake    12.3.3 → 13.0.1 : pinned at ~> 12.0   \e[0;90;49m# Not ready for 13 yet\e[0m
-          rubocop 0.89.0 → 0.89.1 : pinned at  = 0.89.0
+        rake    12.3.3 → 13.0.1 : pinned at ~> 12.0   \e[0;90;49m# Not ready for 13 yet\e[0m
+        rubocop 0.89.0 → 0.89.1 : pinned at  = 0.89.0
 
       REPORT
     end

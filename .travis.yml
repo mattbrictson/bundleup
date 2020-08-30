@@ -11,4 +11,3 @@ rvm:
 - ruby-head
 before_install:
 - gem install bundler -v 2.1.4 --conservative --no-document
-- gem install executable-hooks --conservative --no-document

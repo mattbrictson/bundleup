@@ -13,11 +13,11 @@ class Bundleup::CLITest < Minitest::Test
     end
     assert_includes(stdout, "Please wait a moment while I upgrade your Gemfile.lock...")
     assert_includes(stdout, "The following gems will be updated:")
-    assert_match(/^  mail\s+2\.7\.0\s+→ [\d.]+\s*$/, stdout)
-    assert_match(/^  minitest\s+5\.14\.0\s+→ [\d.]+\s*$/, stdout)
+    assert_match(/^mail\s+2\.7\.0\s+→ [\d.]+\s*$/, stdout)
+    assert_match(/^minitest\s+5\.14\.0\s+→ [\d.]+\s*$/, stdout)
     assert_includes(stdout, "Note that the following gems are being held back:")
-    assert_match(/^  rake\s+12\.3\.3\s+→ [\d.]+\s+:\s+pinned at ~> 12\.0\s+# Not ready for 13 yet\s*$/, stdout)
-    assert_match(/^  rubocop\s+0\.89\.0\s+→ [\d.]+\s+:\s+pinned at  = 0\.89\.0\s*$/, stdout)
+    assert_match(/^rake\s+12\.3\.3\s+→ [\d.]+\s+:\s+pinned at ~> 12\.0\s+# Not ready for 13 yet\s*$/, stdout)
+    assert_match(/^rubocop\s+0\.89\.0\s+→ [\d.]+\s+:\s+pinned at  = 0\.89\.0\s*$/, stdout)
     assert_includes(stdout, "Do you want to apply these changes [Yn]?")
     assert_includes(stdout, "Your original Gemfile.lock has been restored.")
   end

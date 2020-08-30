@@ -8,16 +8,12 @@ module Bundleup
     def to_s
       [
         title,
-        indent(tableize(rows).map { |row| row.join(" ").rstrip }.join("\n")),
+        tableize(rows).map { |row| row.join(" ").rstrip }.join("\n"),
         ""
       ].join("\n\n")
     end
 
     private
-
-    def indent(str)
-      str.gsub(/^/, "  ")
-    end
 
     def tableize(rows)
       widths = max_length_of_each_column(rows)

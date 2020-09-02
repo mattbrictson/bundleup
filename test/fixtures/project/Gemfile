@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
 gem "mail"
-gem "minitest"
+gem "mocha"
 gem "rake", "~> 12.0" # Not ready for 13 yet
 gem "rubocop", "0.89.0"

@@ -56,14 +56,14 @@ module Bundleup
 
             The following gems will be updated:
 
-                #{yellow('bundler-audit 0.6.1   → 0.7.0.1')}
-                i18n          1.8.2   → 1.8.5
-                #{red('json          2.2.0   → (removed)')}
-                parser        2.7.1.1 → 2.7.1.4
-                #{red('rails         e063bef → 57a4ead')}
-                #{blue('rubocop-ast   (new)   → 0.3.0')}
-                #{red('thor          0.20.3  → 1.0.1')}
-                #{yellow('zeitwerk      2.3.0   → 2.4.0')}
+            #{yellow('bundler-audit 0.6.1   → 0.7.0.1')}
+            i18n          1.8.2   → 1.8.5
+            #{red('json          2.2.0   → (removed)')}
+            parser        2.7.1.1 → 2.7.1.4
+            #{red('rails         e063bef → 57a4ead')}
+            #{blue('rubocop-ast   (new)   → 0.3.0')}
+            #{red('thor          0.20.3  → 1.0.1')}
+            #{yellow('zeitwerk      2.3.0   → 2.4.0')}
 
             #{yellow('Do you want to apply these changes [Yn]?')}
 
@@ -73,8 +73,8 @@ module Bundleup
 
             Note that the following gems are being held back:
 
-              rake    12.3.3 → 13.0.1 : pinned at ~> 12.0   #{gray('# Not ready for 13 yet')}
-              rubocop 0.89.0 → 0.89.1 : pinned at  = 0.89.0
+            rake    12.3.3 → 13.0.1 : pinned at ~> 12.0   #{gray('# Not ready for 13 yet')}
+            rubocop 0.89.0 → 0.89.1 : pinned at  = 0.89.0
 
         You may optionally specify one or more #{yellow('GEMS')} or pass #{yellow('OPTIONS')} to bundleup;
         these will be passed through to bundler. See #{blue('bundle update --help')} for the

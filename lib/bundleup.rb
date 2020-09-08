@@ -9,6 +9,7 @@ require "bundleup/report"
 require "bundleup/shell"
 require "bundleup/pin_report"
 require "bundleup/update_report"
+require "bundleup/version_spec"
 
 module Bundleup
   class << self

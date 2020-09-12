@@ -44,7 +44,37 @@ Protip: Any extra command-line arguments will be passed along to `bundle update`
 bundleup --group=development
 ```
 
-## How it works
+### Experimental: `--update-gemfile`
+
+> 💡 This is an experimental feature that may be removed or changed in future versions.
+
+Normally bundleup only makes changes to your Gemfile.lock. It honors the version restrictions ("pins") in your Gemfile and will not update your Gemfile.lock to have versions that are not allowed. However with the `--update-gemfile` flag, bundleup can update the version pins in your Gemfile as well. Consider the following Gemfile:
+
+```ruby
+gem 'sidekiq', '~> 5.2'
+gem 'rubocop', '0.89.0'
+```
+
+Normally running `bundleup` will report that these gems are pinned and therefore cannot be updated to the latest versions. However, if you pass the `--update-gemfile` option like this:
+
+```
+$ bundleup --update-gemfile
+```
+
+Now bundleup will automatically edit your Gemfile pins as needed to bring those gems up to date. For example, bundleup would change the Gemfile to look like this:
+
+```ruby
+gem 'sidekiq', '~> 6.1'
+gem 'rubocop', '0.90.0'
+```
+
+Note that `--update-gemfile` will _not_ modify Gemfile entries that contain a comment, like this:
+
+```ruby
+gem 'sidekiq', '~> 5.2' # our monkey patch doesn't work on 6.0+
+```
+
+## How bundleup works
 
 bundleup starts by making a backup copy of your Gemfile.lock. Next it runs `bundle check` (and `bundle install` if any gems are missing in your local environment), `bundle list`, then `bundle update` and `bundle list` again to find what gems versions are being used before and after Bundler does its updating magic. (Since gems are actually being installed into your Ruby environment during these steps, the process may take a few moments to complete, especially if gems with native extensions need to be compiled.)
 

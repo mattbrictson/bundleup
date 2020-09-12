@@ -81,6 +81,13 @@ module Bundleup
         these will be passed through to bundler. See #{blue('bundle update --help')} for the
         full list of the options that bundler supports.
 
+        Finally, bundleup also supports an experimental #{yellow('--update-gemfile')} option.
+        If specified, bundleup with modify the version restrictions specified in
+        your Gemfile so that it can install the latest version of each gem. For
+        instance, if your Gemfile specifies #{yellow('gem "sidekiq", "~> 5.2"')} but an update
+        to version 6.1.2 is available, bundleup will modify the Gemfile entry to
+        be #{yellow('gem "sidekiq", "~> 6.1"')} in order to permit the update.
+
         Examples:
 
             #{gray('# Update all gems')}
@@ -91,6 +98,9 @@ module Bundleup
 
             #{gray('# Only update the rake gem')}
             #{blue('$ bundleup rake')}
+
+            #{gray('# Experimental: modify Gemfile to allow the latest gem versions')}
+            #{blue('$ bundleup --update-gemfile')}
 
       USAGE
       true

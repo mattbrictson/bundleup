@@ -23,16 +23,18 @@ module Bundleup
 
     def relax
       return self if %w[!= > >=].include?(operator)
+      return self.class.parse(">= 0") if %w[< <=].include?(operator)
 
       self.class.new(parts: parts, operator: ">=")
     end
 
-    def shift(new_version)
-      return self if %w[!= >].include?(operator)
+    def shift(new_version) # rubocop:disable Metrics/AbcSize
+      return self.class.parse(new_version) if exact?
+      return self if Gem::Requirement.new(to_s).satisfied_by?(Gem::Version.new(new_version))
+      return self.class.new(parts: self.class.parse(new_version).parts, operator: "<=") if %w[< <=].include?(operator)
 
-      new_version = self.class.parse(new_version)
-      new_slice = exact? ? new_version : new_version.slice(parts.length)
-      self.class.new(parts: new_slice.parts, operator: operator)
+      new_slice = self.class.parse(new_version).slice(parts.length)
+      self.class.new(parts: new_slice.parts, operator: "~>")
     end
 
     def slice(amount)

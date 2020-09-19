@@ -3,19 +3,24 @@ require "tempfile"
 
 class Bundleup::BackupTest < Minitest::Test
   def test_restore_on_error
-    original_contents = "Hello, world!\n"
-    file = Tempfile.new
-    file << original_contents
-    file.close
+    original_contents = ["Hello, world!\n", "Another file\n"]
+    files = original_contents.map do |content|
+      file = Tempfile.new
+      file << content
+      file.close
+      file
+    end
 
     assert_raises(StandardError, "oh no!") do
-      Bundleup::Backup.restore_on_error(file.path) do
-        IO.write(file.path, "Modified!\n")
+      Bundleup::Backup.restore_on_error(*files.map(&:path)) do
+        files.each { |file| IO.write(file.path, "Modified!\n") }
         raise "oh no!"
       end
     end
 
-    assert_equal(original_contents, IO.read(file.path))
+    original_contents.zip(files).each do |content, file|
+      assert_equal(content, IO.read(file.path))
+    end
   end
 
   def test_restore

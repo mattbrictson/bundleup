@@ -1,5 +1,6 @@
 module Bundleup
   class Backup
+    # TODO: test multiple paths
     def self.restore_on_error(*paths)
       backup = new(*paths)
       begin

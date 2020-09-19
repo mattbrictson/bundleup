@@ -14,6 +14,7 @@ module Bundleup
       end
     end
 
+    # TODO: test
     def gem_pins_without_comments
       (gem_names - gem_comments.keys).each_with_object({}) do |gem_name, hash|
         next unless (match = gem_declaration_with_pinned_version_re(gem_name).match(contents))
@@ -23,12 +24,14 @@ module Bundleup
       end
     end
 
+    # TODO: test
     def relax_gem_pins!(gem_names)
       gem_names.each do |gem_name|
         rewrite_gem_version!(gem_name, &:relax)
       end
     end
 
+    # TODO: test
     def shift_gem_pins!(new_gem_versions)
       new_gem_versions.each do |gem_name, new_version|
         rewrite_gem_version!(gem_name) { |version_spec| version_spec.shift(new_version) }

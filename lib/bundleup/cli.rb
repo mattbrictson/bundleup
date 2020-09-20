@@ -118,7 +118,6 @@ module Bundleup
       update_report, pin_report, _, outdated_gems = perform_analysis
       updatable_gems = gemfile.gem_pins_without_comments.slice(*outdated_gems.keys)
 
-      # TODO: test
       if updatable_gems.any? && @update_gemfile
         lockfile_backup.restore
         orig_gemfile = Gemfile.new

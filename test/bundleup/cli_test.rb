@@ -1,11 +1,13 @@
 require "test_helper"
+require "fileutils"
+require "tempfile"
 
 class Bundleup::CLITest < Minitest::Test
   include OutputHelpers
 
   def test_it_works_with_a_sample_project # rubocop:disable Minitest/MultipleAssertions
-    stdout = capturing_plain_output(stdin: "n\n") do
-      Dir.chdir(File.expand_path("../fixtures/project", __dir__)) do
+    stdout = within_copy_of_sample_project do
+      capturing_plain_output(stdin: "n\n") do
         with_clean_bundler_env do
           Bundleup::CLI.new([]).run
         end
@@ -48,6 +50,32 @@ class Bundleup::CLITest < Minitest::Test
     end
   end
 
+  def test_update_gemfile_flag # rubocop:disable Minitest/MultipleAssertions
+    stdout, updated_gemfile = within_copy_of_sample_project do
+      out = capturing_plain_output(stdin: "y\n") do
+        with_clean_bundler_env do
+          Bundleup::CLI.new(["--update-gemfile"]).run
+        end
+      end
+      [out, IO.read("Gemfile")]
+    end
+
+    assert_match(/^mail\s+2\.7\.0\s+→ [\d.]+\s*$/, stdout)
+    assert_match(/^mocha\s+1\.11\.1\s+→ [\d.]+\s*$/, stdout)
+    assert_match(/^rubocop\s+0\.89\.0\s+→ [\d.]+\s*$/, stdout)
+    assert_match(/^rake\s+12\.3\.3\s+→ [\d.]+\s+:\s+pinned at ~> 12\.0\s+# Not ready for 13 yet\s*$/, stdout)
+    assert_includes(stdout, "Do you want to apply these changes [Yn]?")
+    assert_includes(stdout, "✔ Done!")
+
+    assert_includes(updated_gemfile, <<~GEMFILE)
+      gem "mail"
+      gem "mocha"
+      gem "rake", "~> 12.0" # Not ready for 13 yet
+    GEMFILE
+    assert_match(/^gem "rubocop", "[.\d]+"$/, updated_gemfile)
+    refute_match(/^gem "rubocop", "0.89.0"$/, updated_gemfile)
+  end
+
   private
 
   def with_clean_bundler_env(&block)
@@ -59,6 +87,16 @@ class Bundleup::CLITest < Minitest::Test
       end
     else
       yield
+    end
+  end
+
+  def within_copy_of_sample_project(&block)
+    sample_dir = File.expand_path("../fixtures/project", __dir__)
+    sample_files = %w[Gemfile Gemfile.lock].map { |file| File.join(sample_dir, file) }
+
+    Dir.mktmpdir do |path|
+      FileUtils.cp(sample_files, path)
+      Dir.chdir(path, &block)
     end
   end
 end

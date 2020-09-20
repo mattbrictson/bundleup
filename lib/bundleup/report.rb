@@ -3,7 +3,11 @@ require "forwardable"
 module Bundleup
   class Report
     extend Forwardable
-    def_delegators :rows, :empty?
+    def_delegators :rows, :empty?, :one?
+
+    def many?
+      rows.length > 1
+    end
 
     def to_s
       [

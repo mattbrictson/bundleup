@@ -44,5 +44,11 @@ module Bundleup
     def to_s
       [operator, parts.join(".")].compact.join(" ")
     end
+
+    def ==(other)
+      return false unless other.is_a?(VersionSpec)
+
+      to_s == other.to_s
+    end
   end
 end

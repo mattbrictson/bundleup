@@ -23,7 +23,7 @@ task :disable_overcommit do
   ENV["OVERCOMMIT_DISABLE"] = "1"
 end
 
-task build: :disable_overcommit
+Rake::Task[:build].enhance [:disable_overcommit]
 
 task :verify_gemspec_files do
   git_files = `git ls-files -z`.split("\x0")
@@ -43,7 +43,7 @@ task :verify_gemspec_files do
   ERROR
 end
 
-task build: :verify_gemspec_files
+Rake::Task[:build].enhance [:verify_gemspec_files]
 
 # == "rake bump" tasks ========================================================
 

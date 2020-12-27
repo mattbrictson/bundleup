@@ -8,6 +8,7 @@ rvm:
 - 2.5.8
 - 2.6.6
 - 2.7.2
+- 3.0.0
 - ruby-head
 before_install:
-- gem install bundler -v 2.1.4 --conservative --no-document
+- gem install bundler -v 2.2.3 --conservative --no-document

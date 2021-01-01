@@ -11,4 +11,4 @@ rvm:
 - 3.0.0
 - ruby-head
 before_install:
-- gem install bundler -v 2.2.3 --conservative --no-document
+- gem install bundler -v 2.2.4 --conservative --no-document

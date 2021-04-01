@@ -5,7 +5,6 @@ class Bundleup::GemfileTest < Minitest::Test
   def test_gem_comments
     gemfile = with_copy_of_sample_gemfile { |path| Bundleup::Gemfile.new(path) }
 
-    # rubocop:disable Layout/LineLength
     assert_equal(
       {
         "rails" => "# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'",
@@ -25,7 +24,6 @@ class Bundleup::GemfileTest < Minitest::Test
       },
       gemfile.gem_comments
     )
-    # rubocop:enable Layout/LineLength
   end
 
   def test_gem_pins_without_comments

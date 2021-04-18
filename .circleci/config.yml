@@ -65,14 +65,14 @@ workflows:
       - test:
           matrix:
             parameters:
-              version: ["2.5.9", "2.6.7", "2.7.3", "3.0.1"]
+              version: ["2.6.7", "2.7.3", "3.0.1"]
   cron-workflow:
     jobs:
       - rubocop
       - test:
           matrix:
             parameters:
-              version: ["2.5.9", "2.6.7", "2.7.3", "3.0.1"]
+              version: ["2.6.7", "2.7.3", "3.0.1"]
     triggers:
       - schedule:
           cron: "0 13 * * 6"

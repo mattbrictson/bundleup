@@ -57,7 +57,7 @@ class Bundleup::CLITest < Minitest::Test
           Bundleup::CLI.new(["--update-gemfile"]).run
         end
       end
-      [out, IO.read("Gemfile")]
+      [out, File.read("Gemfile")]
     end
 
     assert_match(/^mail\s+2\.7\.0\s+→ [\d.]+\s*$/, stdout)

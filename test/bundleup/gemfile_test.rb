@@ -40,7 +40,7 @@ class Bundleup::GemfileTest < Minitest::Test
     with_copy_of_sample_gemfile do |path|
       Bundleup::Gemfile.new(path).relax_gem_pins!(%w[rails uglifier capybara])
 
-      assert_equal(<<~'GEMFILE', IO.read(path))
+      assert_equal(<<~'GEMFILE', File.read(path))
         source 'https://rubygems.org'
 
         git_source(:github) do |repo_name|
@@ -107,7 +107,7 @@ class Bundleup::GemfileTest < Minitest::Test
         "capybara" => "3.9.1"
       )
 
-      assert_equal(<<~'GEMFILE', IO.read(path))
+      assert_equal(<<~'GEMFILE', File.read(path))
         source 'https://rubygems.org'
 
         git_source(:github) do |repo_name|
@@ -170,7 +170,7 @@ class Bundleup::GemfileTest < Minitest::Test
 
   def with_copy_of_sample_gemfile
     file = Tempfile.new
-    file << IO.read(File.expand_path("../fixtures/Gemfile.sample", __dir__))
+    file << File.read(File.expand_path("../fixtures/Gemfile.sample", __dir__))
     file.close
     yield file.path
   end

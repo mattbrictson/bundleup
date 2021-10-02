@@ -4,7 +4,7 @@ module Bundleup
 
     def initialize(path="Gemfile")
       @path = path
-      @contents = IO.read(path)
+      @contents = File.read(path)
     end
 
     def gem_comments
@@ -45,7 +45,7 @@ module Bundleup
       end
       raise "Can't rewrite version for #{gem_name}; it does not have a pin" unless found
 
-      IO.write(path, contents)
+      File.write(path, contents)
     end
 
     attr_reader :contents

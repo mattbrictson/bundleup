@@ -12,13 +12,13 @@ module Bundleup
 
     def initialize(*paths)
       @original_contents = paths.each_with_object({}) do |path, hash|
-        hash[path] = IO.read(path)
+        hash[path] = File.read(path)
       end
     end
 
     def restore
       original_contents.each do |path, contents|
-        IO.write(path, contents)
+        File.write(path, contents)
       end
     end
 

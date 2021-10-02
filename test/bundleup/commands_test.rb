@@ -66,6 +66,6 @@ class Bundleup::CommandsTest < Minitest::Test
 
   def read_fixture(fixture)
     fixture_path = File.expand_path("../fixtures/#{fixture}", __dir__)
-    IO.read(fixture_path)
+    File.read(fixture_path)
   end
 end

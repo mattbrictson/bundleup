@@ -13,13 +13,13 @@ class Bundleup::BackupTest < Minitest::Test
 
     assert_raises(StandardError, "oh no!") do
       Bundleup::Backup.restore_on_error(*files.map(&:path)) do
-        files.each { |file| IO.write(file.path, "Modified!\n") }
+        files.each { |file| File.write(file.path, "Modified!\n") }
         raise "oh no!"
       end
     end
 
     original_contents.zip(files).each do |content, file|
-      assert_equal(content, IO.read(file.path))
+      assert_equal(content, File.read(file.path))
     end
   end
 
@@ -31,12 +31,12 @@ class Bundleup::BackupTest < Minitest::Test
 
     backup = Bundleup::Backup.new(file.path)
 
-    assert_equal(original_contents, IO.read(file.path))
+    assert_equal(original_contents, File.read(file.path))
 
-    IO.write(file.path, "Modified!\n")
-    assert_equal("Modified!\n", IO.read(file.path))
+    File.write(file.path, "Modified!\n")
+    assert_equal("Modified!\n", File.read(file.path))
 
     backup.restore
-    assert_equal(original_contents, IO.read(file.path))
+    assert_equal(original_contents, File.read(file.path))
   end
 end

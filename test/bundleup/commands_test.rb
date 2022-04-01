@@ -3,7 +3,7 @@ require "test_helper"
 class Bundleup::CommandsTest < Minitest::Test
   def test_check?
     Bundleup.shell.expects(:run?).with(%w[bundle check]).returns(true)
-    assert(Bundleup::Commands.new.check?)
+    assert_predicate(Bundleup::Commands.new, :check?)
   end
 
   def test_install

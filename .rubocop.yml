@@ -49,6 +49,9 @@ Style/Documentation:
 Style/DoubleNegation:
   Enabled: false
 
+Style/FetchEnvVar:
+  Enabled: false
+
 Style/FrozenStringLiteralComment:
   Enabled: false
 

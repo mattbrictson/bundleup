@@ -1,3 +1,3 @@
 module Bundleup
-  VERSION = "2.2.2".freeze
+  VERSION = "2.2.3".freeze
 end

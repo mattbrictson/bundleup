@@ -22,9 +22,9 @@ class Bundleup::CommandsTest < Minitest::Test
 
   def test_outdated_2_1
     Bundleup.shell
-            .stubs(:capture)
-            .with(%w[bundle outdated], raise_on_error: false)
-            .returns(read_fixture("outdated-2.1.out"))
+      .stubs(:capture)
+      .with(%w[bundle outdated], raise_on_error: false)
+      .returns(read_fixture("outdated-2.1.out"))
 
     assert_equal(
       {
@@ -38,9 +38,9 @@ class Bundleup::CommandsTest < Minitest::Test
 
   def test_outdated_2_2
     Bundleup.shell
-            .stubs(:capture)
-            .with(%w[bundle outdated], raise_on_error: false)
-            .returns(read_fixture("outdated-2.2.out"))
+      .stubs(:capture)
+      .with(%w[bundle outdated], raise_on_error: false)
+      .returns(read_fixture("outdated-2.2.out"))
 
     assert_equal(
       {

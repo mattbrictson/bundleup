@@ -60,6 +60,9 @@ Metrics/ClassLength:
 Minitest/MultipleAssertions:
   Max: 6
 
+Minitest/EmptyLineBeforeAssertionMethods:
+  Enabled: false
+
 Naming/MemoizedInstanceVariableName:
   Enabled: false
 

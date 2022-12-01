@@ -4,7 +4,7 @@ gemspec
 gem "minitest", "~> 5.0"
 gem "minitest-ci", "~> 3.4"
 gem "minitest-reporters", "~> 1.1"
-gem "mocha", "~> 1.11"
+gem "mocha", "~> 2.0"
 gem "rake", "~> 13.0"
 gem "rubocop", "1.39.0"
 gem "rubocop-minitest", "0.24.0"

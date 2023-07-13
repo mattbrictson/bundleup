@@ -2,9 +2,9 @@ require "forwardable"
 
 module Bundleup
   class Commands
-    GEMFILE_ENTRY_REGEXP = /\* (\S+) \((\S+)(?: (\S+))?\)/.freeze
-    OUTDATED_2_1_REGEXP = /\* (\S+) \(newest (\S+),.* requested (.*)\)/.freeze
-    OUTDATED_2_2_REGEXP = /^(\S+)\s\s+\S+\s\s+(\d\S+)\s\s+(\S.*?)(?:$|\s\s)/.freeze
+    GEMFILE_ENTRY_REGEXP = /\* (\S+) \((\S+)(?: (\S+))?\)/
+    OUTDATED_2_1_REGEXP = /\* (\S+) \(newest (\S+),.* requested (.*)\)/
+    OUTDATED_2_2_REGEXP = /^(\S+)\s\s+\S+\s\s+(\d\S+)\s\s+(\S.*?)(?:$|\s\s)/
 
     extend Forwardable
     def_delegators :Bundleup, :shell

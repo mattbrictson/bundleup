@@ -1,7 +1,8 @@
 # bundleup
 
-[![Gem Version](https://badge.fury.io/rb/bundleup.svg)](http://badge.fury.io/rb/bundleup)
-[![Build Status](https://mattbrictson.semaphoreci.com/badges/bundleup/branches/main.svg?style=shields)](https://mattbrictson.semaphoreci.com/projects/bundleup)
+[![Gem Version](https://img.shields.io/gem/v/bundleup)](https://rubygems.org/gems/bundleup)
+[![Gem Downloads](https://img.shields.io/gem/dt/bundleup)](https://www.ruby-toolbox.com/projects/bundleup)
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/mattbrictson/bundleup/ci.yml)](https://github.com/mattbrictson/bundleup/actions/workflows/ci.yml)
 
 **Run `bundleup` on a Ruby project containing a Gemfile to see what gem dependencies need updating.** It is a friendlier command-line interface to [Bundler’s][bundler] `bundle update` and `bundle outdated`.
 

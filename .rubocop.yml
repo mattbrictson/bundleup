@@ -49,6 +49,9 @@ Metrics/AbcSize:
   Exclude:
     - "test/**/*"
 
+Metrics/BlockLength:
+  CountAsOne: ["heredoc"]
+
 Metrics/MethodLength:
   Exclude:
     - "test/**/*"

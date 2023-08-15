@@ -76,6 +76,42 @@ class Bundleup::CLITest < Minitest::Test
     refute_match(/^gem "rubocop", "0.89.0"$/, updated_gemfile)
   end
 
+  def test_returned_updated_and_pinned_gems_after_run
+    cli = Bundleup::CLI.new([])
+
+    within_copy_of_sample_project do
+      capturing_plain_output(stdin: "y\n") do
+        with_clean_bundler_env do
+          cli.run
+        end
+      end
+    end
+
+    assert_kind_of(Array, cli.updated_gems)
+    assert_kind_of(Array, cli.pinned_gems)
+    assert_includes(cli.updated_gems, "mail")
+    assert_includes(cli.updated_gems, "mocha")
+    assert_includes(cli.pinned_gems, "rake")
+    assert_includes(cli.pinned_gems, "rubocop")
+  end
+
+  def test_returned_no_chenged_gems_after_rejected_changes
+    cli = Bundleup::CLI.new([])
+
+    within_copy_of_sample_project do
+      capturing_plain_output(stdin: "n\n") do
+        with_clean_bundler_env do
+          cli.run
+        end
+      end
+    end
+
+    assert_kind_of(Array, cli.updated_gems)
+    assert_kind_of(Array, cli.pinned_gems)
+    assert_empty(cli.updated_gems)
+    assert_empty(cli.pinned_gems)
+  end
+
   private
 
   def with_clean_bundler_env(&block)

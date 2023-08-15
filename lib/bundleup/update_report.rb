@@ -25,6 +25,12 @@ module Bundleup
       end
     end
 
+    def updated_gems
+      gem_names.reject do |gem|
+        old_versions[gem] == new_versions[gem]
+      end
+    end
+
     private
 
     attr_reader :old_versions, :new_versions

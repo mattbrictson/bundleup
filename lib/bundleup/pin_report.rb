@@ -24,6 +24,10 @@ module Bundleup
       end
     end
 
+    def pinned_gems
+      outdated_gems.keys.sort
+    end
+
     private
 
     attr_reader :gem_versions, :outdated_gems, :gem_comments

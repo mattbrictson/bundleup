@@ -43,4 +43,17 @@ class Bundleup::PinReportTest < Minitest::Test
       REPORT
     end
   end
+
+  def test_list_pinned_gems
+    report = Bundleup::PinReport.new(
+      gem_versions: { "rake" => "12.3.3", "rubocop" => "0.89.0" },
+      outdated_gems: {
+        "rake" => { newest: "13.0.1", pin: "~> 12.0" },
+        "rubocop" => { newest: "0.89.1", pin: "= 0.89.0" }
+      },
+      gem_comments: {}
+    )
+
+    assert_equal(%w[rake rubocop], report.pinned_gems)
+  end
 end

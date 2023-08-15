@@ -8,13 +8,20 @@ module Bundleup
     extend Forwardable
     def_delegators :Bundleup, :commands, :logger
 
+    attr_reader :updated_gems, :pinned_gems
+
     def initialize(args)
       @args = args.dup
       @update_gemfile = @args.delete("--update-gemfile")
+      @updated_gems = []
+      @pinned_gems = []
     end
 
     def run # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
       print_usage && return if (args & %w[-h --help]).any?
+
+      @updated_gems = []
+      @pinned_gems = []
 
       assert_gemfile_and_lock_exist!
 
@@ -32,6 +39,9 @@ module Bundleup
           logger.puts pin_report unless pin_report.empty?
 
           if logger.confirm?("Do you want to apply these changes?")
+            @updated_gems = update_report.updated_gems
+            @pinned_gems = pin_report.pinned_gems
+
             logger.ok "Done!"
           else
             backup.restore

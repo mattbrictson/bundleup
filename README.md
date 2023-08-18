@@ -96,7 +96,7 @@ cli = Bundleup::CLI.new([])
 cli.run
 
 if cli.updated_gems.any?
-  system "bundle exec rspec"q
+  system "bundle exec rspec"
 elsif cli.updated_gems.include?("rubocop")
   system "bundle exec rubocop"
 end

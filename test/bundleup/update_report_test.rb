@@ -94,4 +94,21 @@ class Bundleup::UpdateReportTest < Minitest::Test
       REPORT
     end
   end
+
+  def test_list_updated_gems
+    report = Bundleup::UpdateReport.new(
+      old_versions: {
+        "i18n" => "1.8.2",
+        "zeitwerk" => "2.4.0",
+        "json" => "2.2.0"
+      },
+      new_versions: {
+        "i18n" => "1.8.5",
+        "zeitwerk" => "2.4.0",
+        "parser" => "2.7.1.4"
+      }
+    )
+
+    assert_equal(%w[i18n json parser], report.updated_gems)
+  end
 end

@@ -75,6 +75,38 @@ Note that `--update-gemfile` will _not_ modify Gemfile entries that contain a co
 gem 'sidekiq', '~> 5.2' # our monkey patch doesn't work on 6.0+
 ```
 
+### Integrate bundlup in a script
+
+`Bundleup::CLI` gives you two methods to track updated and pinned gems:
+
+```ruby
+cli = Bundleup::CLI.new([])
+cli.run
+cli.updated_gems
+# > ["rubocop"]
+
+cli.pinned_gems
+# > ["rake"]
+```
+
+You can then easily create scripts to perform any actions such as running tests, running rubocop, or commit changes.
+
+```ruby
+cli = Bundleup::CLI.new([])
+cli.run
+
+if cli.updated_gems.any?
+  system "bundle exec rspec"
+elsif cli.updated_gems.include?("rubocop")
+  system "bundle exec rubocop"
+end
+
+if cli.updated_gems.any?
+  system "git commit -m \"Update gems dependencies\" -- Gemfile.lock"
+end
+```
+
+
 ## How bundleup works
 
 bundleup starts by making a backup copy of your Gemfile.lock. Next it runs `bundle check` (and `bundle install` if any gems are missing in your local environment), `bundle list`, then `bundle update` and `bundle list` again to find what gems versions are being used before and after Bundler does its updating magic. (Since gems are actually being installed into your Ruby environment during these steps, the process may take a few moments to complete, especially if gems with native extensions need to be compiled.)

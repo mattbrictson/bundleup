@@ -18,7 +18,7 @@ module Bundleup
     end
 
     def run # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
-      print_usage && return if (args & %w[-h --help]).any?
+      print_usage && return if args.intersect?(%w[-h --help])
 
       @updated_gems = []
       @pinned_gems = []
@@ -149,8 +149,8 @@ module Bundleup
       new_versions = commands.list
       outdated_gems = commands.outdated
 
-      update_report = UpdateReport.new(old_versions: old_versions, new_versions: new_versions)
-      pin_report = PinReport.new(gem_versions: new_versions, outdated_gems: outdated_gems, gem_comments: gem_comments)
+      update_report = UpdateReport.new(old_versions:, new_versions:)
+      pin_report = PinReport.new(gem_versions: new_versions, outdated_gems:, gem_comments:)
 
       [update_report, pin_report, new_versions, outdated_gems]
     end

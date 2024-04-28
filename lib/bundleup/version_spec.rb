@@ -7,7 +7,7 @@ module Bundleup
       _, operator, number = version.match(/^([^\d\s]*)\s*(.+)/).to_a
       operator = nil if operator.empty?
 
-      new(parts: number.split("."), operator: operator)
+      new(parts: number.split("."), operator:)
     end
 
     attr_reader :parts, :operator
@@ -25,7 +25,7 @@ module Bundleup
       return self if %w[!= > >=].include?(operator)
       return self.class.parse(">= 0") if %w[< <=].include?(operator)
 
-      self.class.new(parts: parts, operator: ">=")
+      self.class.new(parts:, operator: ">=")
     end
 
     def shift(new_version) # rubocop:disable Metrics/AbcSize
@@ -38,7 +38,7 @@ module Bundleup
     end
 
     def slice(amount)
-      self.class.new(parts: parts[0, amount], operator: operator)
+      self.class.new(parts: parts[0, amount], operator:)
     end
 
     def to_s

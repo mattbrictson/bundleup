@@ -6,7 +6,7 @@ module OutputHelpers
       original_logger = Bundleup.logger
       stdout = StringIO.new
       stdin = stdin.nil? ? $stdin : StringIO.new(stdin)
-      Bundleup.logger = Bundleup::Logger.new(stdout: stdout, stdin: stdin)
+      Bundleup.logger = Bundleup::Logger.new(stdout:, stdin:)
       yield
       stdout.string
     ensure

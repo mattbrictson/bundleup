@@ -29,7 +29,7 @@ module Bundleup
       expr = output.match?(/^Gem\s+Current\s+Latest/) ? OUTDATED_2_2_REGEXP : OUTDATED_2_1_REGEXP
 
       output.scan(expr).each_with_object({}) do |(name, newest, pin), gems|
-        gems[name] = { newest: newest, pin: pin }
+        gems[name] = { newest:, pin: }
       end
     end
 

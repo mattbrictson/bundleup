@@ -114,12 +114,12 @@ class Bundleup::CLITest < Minitest::Test
 
   private
 
-  def with_clean_bundler_env(&block)
+  def with_clean_bundler_env(&)
     if defined?(Bundler)
       if Bundler.respond_to?(:with_unbundled_env)
-        Bundler.with_unbundled_env(&block)
+        Bundler.with_unbundled_env(&)
       else
-        Bundler.with_clean_env(&block)
+        Bundler.with_clean_env(&)
       end
     else
       yield

@@ -18,7 +18,7 @@ module Bundleup
     end
 
     def run # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
-      print_usage && return if (args & %w[-h --help]).any?
+      print_usage && return if args.intersect?(%w[-h --help])
 
       @updated_gems = []
       @pinned_gems = []

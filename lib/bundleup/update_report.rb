@@ -7,7 +7,7 @@ module Bundleup
     end
 
     def title
-      return "This gem will be updated:" if rows.count == 1
+      return "This gem will be updated:" if rows.one?
 
       "The following gems will be updated:"
     end

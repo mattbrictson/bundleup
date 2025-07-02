@@ -8,7 +8,7 @@ module Bundleup
     end
 
     def title
-      return "Note that this gem is being held back:" if rows.count == 1
+      return "Note that this gem is being held back:" if rows.one?
 
       "Note that the following gems are being held back:"
     end

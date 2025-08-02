@@ -7,6 +7,7 @@ module Bundleup
     OUTDATED_2_2_REGEXP = /^(\S+)\s\s+\S+\s\s+(\d\S+)\s\s+(\S.*?)(?:$|\s\s)/
 
     extend Forwardable
+
     def_delegators :Bundleup, :shell
 
     def check?

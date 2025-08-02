@@ -4,6 +4,7 @@ require "open3"
 module Bundleup
   class Shell
     extend Forwardable
+
     def_delegators :Bundleup, :logger
 
     def capture(command, raise_on_error: true)

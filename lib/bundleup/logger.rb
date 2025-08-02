@@ -3,6 +3,7 @@ require "io/console"
 module Bundleup
   class Logger
     extend Forwardable
+
     def_delegators :@stdout, :print, :puts, :tty?
     def_delegators :@stdin, :gets
 

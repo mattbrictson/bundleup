@@ -6,6 +6,7 @@ module Bundleup
 
     include Colors
     extend Forwardable
+
     def_delegators :Bundleup, :commands, :logger
 
     attr_reader :updated_gems, :pinned_gems

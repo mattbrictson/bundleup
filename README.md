@@ -24,7 +24,7 @@ Here it is in action:
 ## Requirements
 
 - Bundler 1.16 or later
-- Ruby 3.1 or later
+- Ruby 3.2 or later
 
 ## Usage
 

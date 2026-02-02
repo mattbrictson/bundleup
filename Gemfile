@@ -2,7 +2,7 @@ source "https://rubygems.org"
 gemspec
 
 gem "irb"
-gem "minitest", "~> 5.0"
+gem "minitest", "~> 6.0"
 gem "minitest-rg", "~> 5.3"
 gem "mocha", "~> 3.0"
 gem "rake", "~> 13.0"

@@ -2,7 +2,8 @@ require "forwardable"
 
 module Bundleup
   class CLI
-    Error = Class.new(StandardError)
+    class Error < StandardError
+    end
 
     include Colors
     extend Forwardable

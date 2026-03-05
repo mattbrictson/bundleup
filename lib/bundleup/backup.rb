@@ -11,8 +11,8 @@ module Bundleup
     end
 
     def initialize(*paths)
-      @original_contents = paths.each_with_object({}) do |path, hash|
-        hash[path] = File.read(path)
+      @original_contents = paths.to_h do |path|
+        [path, File.read(path)]
       end
     end
 

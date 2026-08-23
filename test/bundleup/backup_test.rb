@@ -1,7 +1,6 @@
-require "test_helper"
 require "tempfile"
 
-class Bundleup::BackupTest < Minitest::Test
+class Bundleup::BackupTest < Bundleup::Test
   def test_restore_on_error
     original_contents = ["Hello, world!\n", "Another file\n"]
     files = original_contents.map do |content|

@@ -1,11 +1,10 @@
-require "test_helper"
 require "fileutils"
 require "tempfile"
 
-class Bundleup::CLITest < Minitest::Test
+class Bundleup::CLITest < Bundleup::Test
   include OutputHelpers
 
-  def test_it_works_with_a_sample_project # rubocop:disable Minitest/MultipleAssertions
+  def test_it_works_with_a_sample_project
     stdout = within_copy_of_sample_project do
       capturing_plain_output(stdin: "n\n") do
         with_clean_bundler_env do
@@ -50,7 +49,7 @@ class Bundleup::CLITest < Minitest::Test
     end
   end
 
-  def test_update_gemfile_flag # rubocop:disable Minitest/MultipleAssertions
+  def test_update_gemfile_flag
     stdout, updated_gemfile = within_copy_of_sample_project do
       out = capturing_plain_output(stdin: "y\n") do
         with_clean_bundler_env do

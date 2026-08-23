@@ -1,7 +1,6 @@
-require "test_helper"
 require "tempfile"
 
-class Bundleup::GemfileTest < Minitest::Test
+class Bundleup::GemfileTest < Bundleup::Test
   def test_gem_comments
     gemfile = with_copy_of_sample_gemfile { |path| Bundleup::Gemfile.new(path) }
 

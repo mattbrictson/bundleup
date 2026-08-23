@@ -1,6 +1,4 @@
-require "test_helper"
-
-class Bundleup::CommandsTest < Minitest::Test
+class Bundleup::CommandsTest < Bundleup::Test
   def test_check?
     Bundleup.shell.expects(:run?).with(%w[bundle check]).returns(true)
     assert_predicate(Bundleup::Commands.new, :check?)

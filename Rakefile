@@ -1,11 +1,10 @@
 require "bundler/gem_tasks"
-require "rake/testtask"
+require "megatest/test_task"
 require "rubocop/rake_task"
 
-Rake::TestTask.new(:test) do |t|
-  t.libs << "test"
-  t.libs << "lib"
-  t.test_files = FileList["test/**/*_test.rb"]
+Megatest::TestTask.create(:test) do |t|
+  t.command = "bin/megatest"
+  t.tests = FileList["test/**/*_test.rb"]
 end
 
 RuboCop::RakeTask.new

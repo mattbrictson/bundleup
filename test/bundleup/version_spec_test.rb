@@ -1,6 +1,4 @@
-require "test_helper"
-
-class Bundleup::VersionSpecTest < Minitest::Test
+class Bundleup::VersionSpecTest < Bundleup::Test
   def test_relax_doesnt_affect_greater_than_equal_specs
     assert_equal(">= 1.0.1", parse(">= 1.0.1").relax.to_s)
   end

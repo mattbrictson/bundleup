@@ -1,6 +1,4 @@
-require "test_helper"
-
-class Bundleup::LoggerTest < Minitest::Test
+class Bundleup::LoggerTest < Bundleup::Test
   include OutputHelpers
 
   def test_confirm_with_default_response

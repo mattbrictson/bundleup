@@ -1,6 +1,4 @@
-require "test_helper"
-
-class Bundleup::UpdateReportTest < Minitest::Test
+class Bundleup::UpdateReportTest < Bundleup::Test
   include OutputHelpers
 
   def test_singular_title_when_one_gem

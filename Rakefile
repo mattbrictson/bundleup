@@ -4,6 +4,7 @@ require "rubocop/rake_task"
 
 Megatest::TestTask.create(:test) do |t|
   t.command = "bin/megatest"
+  t.extra_args = ["--jobs=1"]
   t.tests = FileList["test/**/*_test.rb"]
 end
 

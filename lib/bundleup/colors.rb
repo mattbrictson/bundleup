@@ -42,7 +42,7 @@ module Bundleup
     end
 
     def strip(str)
-      str.gsub(/\033\[[0-9;]*m/, "")
+      str.to_s.gsub(/\033\[[0-9;]*m/, "")
     end
 
     ANSI_CODES.each do |name, code|
